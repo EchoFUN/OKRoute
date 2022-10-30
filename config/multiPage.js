@@ -30,7 +30,7 @@ const allSitePath = (isEnvDevelopment) => {
       let filePath = `${item}/index.js`;
 
       hash[filename] = [
-        // isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
+        isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
         filePath
       ].filter(Boolean);
     });
@@ -85,19 +85,19 @@ const htmlPlugin = (isEnvProduction, isEnvDevelopment) => {
             chunks: [item],
             template: paths.appHtml,
           },
-          isEnvProduction
+          false
             ? {
               minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
+                removeComments: false,
+                collapseWhitespace: false,
+                removeRedundantAttributes: false,
+                useShortDoctype: false,
+                removeEmptyAttributes: false,
+                removeStyleLinkTypeAttributes: false,
+                keepClosingSlash: false,
+                minifyJS: false,
+                minifyCSS: false,
+                minifyURLs: false,
               },
             }
             : undefined
